@@ -3,6 +3,7 @@ package mtr
 import (
 	"container/ring"
 	"fmt"
+	"log"
 	"math"
 	"math/rand"
 	"net"
@@ -174,6 +175,7 @@ func (m *MTR) discover(ch chan struct{}, count int) {
 			m.mutex.Lock()
 			s := m.registerStatistic(ttl, hopReturn)
 			s.Dest = &ipAddr
+			log.Println("Hop", ttl, ":", hopReturn.Addr, "----",s.Dest)
 			s.PID = id
 			m.mutex.Unlock()
 			ch <- struct{}{}
