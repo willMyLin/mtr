@@ -175,7 +175,7 @@ func (m *MTR) discover(ch chan struct{}, count int) {
 			m.mutex.Lock()
 			s := m.registerStatistic(ttl, hopReturn)
 			s.Dest = &ipAddr
-			log.Println("Hop", ttl, ":", hopReturn.Addr, "----",s.Dest)
+			log.Println("Hop", ttl, ":", hopReturn.Addr,"--",m.SrcAddress, "----",s.Dest)
 			s.PID = id
 			m.mutex.Unlock()
 			ch <- struct{}{}
